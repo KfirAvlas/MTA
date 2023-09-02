@@ -31,9 +31,8 @@ STUDY_TYPE_INTERVENTIONAL = 'Interventional'
 INTERVENTION_COLUMN = 'intervention'
 
 PARAM_GRID_SVC  = {
-    'C': [0.1, 1, 10, 100],
-    'kernel': ['rbf'],
-    'svc__gamma': [1, 0.1, 0.01, 0.001, 0.0001]
+    'C': [0.1, 1, 10, 100, 1000],
+    'gamma': [1, 0.1, 0.01, 0.001, 0.0001]
 }
 
 PARAM_GRID_K_NEIGHBORS = {
@@ -56,10 +55,9 @@ PARAM_GRID_RANDOM_FOREST = {
 }
 
 PARAM_GRID_MLP = {
-    'hidden_layer_sizes': [(50), (100,), (150,)],
+    'hidden_layer_sizes':  [(10), (20,)],
     'activation': ['identity', 'logistic', 'tanh', 'relu'],
     'solver': ['lbfgs', 'sgd', 'adam'],
-    'alpha':  [0.001, 0.0001, 0.00001],
     'learning_rate': ['constant', 'invscaling', 'adaptive']
 }
 
@@ -68,22 +66,46 @@ ESTIMATORS = {
         "estimator_object": SVC(),
         "param_grid": PARAM_GRID_SVC
     },
+    # SVC
+    # best_params: {'C': 1000, 'gamma': 0.001}
+    # test: 0.5
+    # train: 0.5
+
     "KNeighborsClassifier": {
         "estimator_object": KNeighborsClassifier(),
         "param_grid": PARAM_GRID_K_NEIGHBORS
     },
+    # KNeighborsClassifier
+    # best_params: {'algorithm': 'ball_tree', 'n_neighbors': 12, 'weights': 'uniform'}
+    # test: 0.5
+    # train: 0.5075
+
     "DecisionTreeClassifier": {
         "estimator_object": DecisionTreeClassifier(),
         "param_grid": PARAM_GRID_DECISION_TREE
     },
+    # DecisionTreeClassifier
+    # best_params: {'criterion': 'entropy', 'max_features': 'sqrt', 'min_samples_split': 10, 'splitter': 'random'}
+    # test: 0.5484779116465864
+    # train: 0.687865394274234
+
     "RandomForestClassifier": {
         "estimator_object": RandomForestClassifier(),
         "param_grid": PARAM_GRID_RANDOM_FOREST
     },
+    # RandomForestClassifier
+    # best_params: {'criterion': 'log_loss', 'max_features': 'sqrt', 'n_estimators': 1500}
+    # test: 0.52
+    # train: 1.0
+
     "MLPClassifier": {
         "estimator_object": MLPClassifier(),
         "param_grid": PARAM_GRID_MLP
     }
+    # MLPClassifier
+    # best_params: {'activation': 'tanh', 'hidden_layer_sizes': (20,), 'learning_rate': 'invscaling', 'solver': 'adam'}
+    # test: 0.52
+    # train: 0.5323744349573079
 }
 
 SELECTED_ESTIMATOR_NAME = "DecisionTreeClassifier" # can be changed to other model class in the future accroding to changes in grid-search results
