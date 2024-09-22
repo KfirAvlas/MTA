@@ -3,19 +3,26 @@ predicting whether an existing drug will be tested in clinical trials
 
 ## Description
 
-The active global SARS-CoV-2 pandemic caused more millions cases and deaths worldwide. The development of completely new drugs for such a novel disease is a challenging, time intensive process. 
-This emphasizes the importance of drug repurposing, where treatments are found among existing drugs that are meant for different diseases.
-In the following project I was trying to predict whether an existing drug will be tested in COVID-19-related clinical trials. 
-I was using a machine learning algorithm to train a classifier model and predict whether an unseen drug will be tested in COVID-19-related clinical trials. 
-I was trying to use several ML classifiers in order to achieve the best model for prediction. 
+The SARS-CoV-2 pandemic caused more than 769 million cases and
+6.9 million deaths worldwide. The development of completely new drugs for
+such a novel disease is a challenging, time-intensive process. This emphasizes the
+importance of drug repurposing, where treatments are found among existing drugs
+meant for different diseases. A promising approach to this is based on combining
+knowledge graphs with state-of-the-art results from graph neural networks. So
+far, such approaches only considered the unsupervised setting. However, since the
+outbreak of SARS-CoV-2 a few years ago, several clinical trials have already been
+conducted on multiple drugs. In this work, we revisit the established DR-COVID
+model and add supervision of the lists of clinical trials that were conducted.
 
 ## Getting Started
 
 ### Executing program
 
+#### Phase 1
+
 The main entry to the program is in the file ```drug_repurposing.py```
 
-The mail function is ```DrugRepurposing().run()```
+The main function is ```DrugRepurposing().run()```
 
 The function is the main entry point which do the following main actions:
   
@@ -36,6 +43,14 @@ In order to test some other models and thier results you can change the followin
 * SCORING_METRIC
 * NUMBER_OF_FOLDS
 
+#### Phase 2
+
+We executed Automated Machine Learning by using mljar-supervised  Automated Machine Learning Python package that works with tabular data. It abstracts the common way to preprocess the data, construct the machine learning models, and perform hyper-parameters tuning to find the best model. The mljar-supervised help us with:
+explaining and understanding our data, trying many different machine learning models,
+creating Markdown reports from analysis with details about all models,
+saving, re-running and loading the analysis and Machine Learning models.
+
+Result analysis can be found in : https://drive.google.com/drive/folders/12139mlIR8cagEUBiZwLRTq-PWjMWA0A0
 
 ## Authors
 
@@ -46,3 +61,5 @@ kfiravlas@gmail.com
 
 * 0.1
     * Initial Release
+* 0.2      
+    * Automated Machine Learning
